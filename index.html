@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Infinite randomly generated tile map.</title>
+    </head>
+    <body style="margin: 0;">
+        <canvas id="canvas" width="4000" height="3000"></canvas>
+        <script src="configuration.js"></script>
+        <script src="generator.js"></script>
+        <script src="draw.js"></script>
+        <script>
+            loadTileImage(configuration, function(drawTile) {
+                var canvas = document.getElementById("canvas");
+                var context = canvas.getContext("2d");
+                var map = {};
+                rotateTiles(configuration);
+                fillGaps(configuration, map, -100, -100, 200, 200);
+                drawTileMap(context, drawTile, map, -100, -100, 200, 200);
+                console.dir(map[0 + ',' + 0]);
+            });
+        </script>
+    </body>
+</html>
